@@ -20,3 +20,6 @@ esempio: @include focusCta;
   cursor: pointer;
   width: 100%;
   height: 40px; }
+
+.custom-select-group ul {
+  padding-left: 0; }

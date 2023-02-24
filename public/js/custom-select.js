@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     customSelect.forEach((element) => {
         let buttonCustomSelect = document.createElement("button");
-        let containerCustomSelect = document.createElement("div");
+        let containerCustomSelect = document.createElement("ul");
         let thisCustomSelect = document.querySelector('.js-custom-select');
         let customOptions = "";
 
