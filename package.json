@@ -1,0 +1,37 @@
+{
+  "name": "Project",
+  "version": "1.0.0",
+  "description": "Project",
+  "main": "index.js",
+  "scripts": {
+    "scss": "node-sass --watch src/styles/main.scss public/css/custom-select.css",
+    "scss-cpr": "node-sass --output-style compressed --source-map public/css/custom-select.min.css.map src/styles/main.scss public/css/custom-select.min.css",
+	"scripts-cpr": "uglifyjs public/js/*.js --output public/js/script.min.js --source-map url=project-script.min.js.map",
+    "stylelint": "stylelint src/styles/**/*.scss || echo \"lint faild for some file(s).\""
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "keywords": [
+    "web portal"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@popperjs/core": "^2.11.6",
+    "autoprefixer": "^10.4.13",
+    "bootstrap": "^5.2.3",
+    "bootstrap-select": "^1.13.18",
+    "slick-carousel": "^1.8.1",
+    "bourbon": "^7.2.0",
+    "material-icons": "^1.10.11",
+    "node-sass": "^8.0.0",
+    "scss": "^0.2.4",
+    "uglify-js": "^3.17.3"
+  },
+  "devDependencies": {
+    "stylelint": "^14.15.0",
+    "stylelint-config-standard": "^29.0.0"
+  }
+}

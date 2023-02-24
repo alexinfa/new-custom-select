@@ -1,0 +1,22 @@
+/* border radius 
+esempio: @include border-radius(10px);
+*/
+/* box shadow 
+esempio: @include box-shadow(5px, 5px, 5px, rgba(0,0,0,0.5), $inset: true);
+*/
+/* CSS Trasform: rotation 
+esempio: @include rotation(45deg);
+*/
+/* placeholder per input e form generici 
+esempio: @include placeholder(#f00);
+*/
+/* placeholder per cta generiche
+esempio: @include focusCta;
+*/
+.custom-select-group .custom-select-wrapper {
+  display: none; }
+
+.custom-select-group button {
+  cursor: pointer;
+  width: 100%;
+  height: 40px; }

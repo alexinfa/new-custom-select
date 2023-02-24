@@ -1,0 +1,67 @@
+/* border radius 
+esempio: @include border-radius(10px);
+*/
+@mixin border-radius($radius) {
+    border-radius: $radius;
+    -webkit-border-radius: $radius;
+    -moz-border-radius: $radius;
+    -ms-border-radius: $radius;
+    -o-border-radius: $radius;
+}
+
+/* box shadow 
+esempio: @include box-shadow(5px, 5px, 5px, rgba(0,0,0,0.5), $inset: true);
+*/
+@mixin box-shadow($top, $left, $blur, $color, $inset: false) {
+    @if $inset {
+        -webkit-box-shadow: inset $top $left $blur $color;
+        -moz-box-shadow: inset $top $left $blur $color;
+        box-shadow: inset $top $left $blur $color;
+    }
+
+    @else {
+        -webkit-box-shadow: $top $left $blur $color;
+        -moz-box-shadow: $top $left $blur $color;
+        box-shadow: $top $left $blur $color;
+    }
+}
+
+/* CSS Trasform: rotation 
+esempio: @include rotation(45deg);
+*/
+@mixin rotation($deg) {
+    transform: rotate($deg);
+    -webkit-transform: rotate($deg);
+    -moz-transform: rotate($deg);
+}
+
+/* placeholder per input e form generici 
+esempio: @include placeholder(#f00);
+*/
+@mixin placeholder($pcolor) {
+    ::-webkit-input-placeholder {
+        color: $pcolor;
+    }
+
+    ::-moz-placeholder {
+        color: $pcolor;
+    }
+
+    :-ms-input-placeholder {
+        color: $pcolor;
+    }
+
+    :-moz-placeholder {
+        color: $pcolor;
+    }
+}
+
+/* placeholder per cta generiche
+esempio: @include focusCta;
+*/
+@mixin focusCta {
+    border-color: #f90;
+    -webkit-box-shadow: 0 0 0 2px #f90;
+    box-shadow: 0 0 0 2px #f90;
+    outline: 0;
+}
