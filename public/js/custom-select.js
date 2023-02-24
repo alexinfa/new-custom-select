@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", function () {
         element.parentElement.parentElement.append(containerCustomSelect);
 
         containerCustomSelect.append(customOptions);
-
+       console.log(customOptions);
     });
 
 });
