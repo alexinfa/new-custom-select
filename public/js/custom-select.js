@@ -16,18 +16,22 @@ document.addEventListener("DOMContentLoaded", function () {
     customSelect.forEach((element) => {
         let buttonCustomSelect = document.createElement("button");
         let containerCustomSelect = document.createElement("ul");
-        let thisCustomSelect = document.querySelector('.js-custom-select');
+        let containerCustomSelectList = document.createElement("li");
         let customOptions = "";
+        buttonCustomSelect.className = "btn custom-select-button";
+        buttonCustomSelect.ariaLabel = "seleziona un'opzione";
+        containerCustomSelect.className = "custom-select-list-options";
 
-        for (listOptions = 0; listOptions < thisCustomSelect.length; listOptions++) {
-            customOptions = customOptions + "\n" + thisCustomSelect.options[listOptions].value;
+        for (listOptions = 0; listOptions < element.length; listOptions++) {
+            customOptions = customOptions + "\n" + element.options[listOptions].value;
         }
+        
 
         element.parentElement.parentElement.append(buttonCustomSelect);
         element.parentElement.parentElement.append(containerCustomSelect);
 
         containerCustomSelect.append(customOptions);
-       console.log(customOptions);
+
     });
 
 });

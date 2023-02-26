@@ -3,13 +3,13 @@
         display: none;
     }
 
-    button{
-        cursor: pointer;
+    .custom-select-button{
+        border: 1px solid;
         width: 100%;
-        height: 40px;
+        padding: 10px;
     }
 
-    ul{
+    .custom-select-list-options{
         padding-left: 0;
     }
 }
