@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", function () {
         // parameter
         listCustomSelect.className = "custom-select-options-list";
         listCustomSelect.role = "listbox";
-        buttonCustomSelect.className = "btn custom-select-button";
+        buttonCustomSelect.className = "custom-select-button"; // aggiungere alla classe "custom-select-button"" eventuali classi di bootstrap nel caso fosse necessario.
         //buttonCustomSelect.ariaLabel = "seleziona un'opzione";
 
         for (listOptions = 0; listOptions < element.length; listOptions++) {
@@ -28,6 +28,10 @@ document.addEventListener("DOMContentLoaded", function () {
     showHideListButton.forEach(element => {
         element.addEventListener("click", () => {
             element.parentElement.classList.toggle("open");
+
+            if (element.parentElement.classList.contains("open")) {
+                console.log('aperto');
+            }
         });
     });
 
