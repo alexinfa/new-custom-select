@@ -1,7 +1,7 @@
 {
-  "name": "Project",
+  "name": "New custom select",
   "version": "1.0.0",
-  "description": "Project",
+  "description": "Custom select in pure javascript compatible with bootstrap (all version) and custom framework",
   "main": "index.js",
   "scripts": {
     "scss": "node-sass --watch src/styles/main.scss public/css/custom-select.css",
@@ -21,11 +21,7 @@
   "dependencies": {
     "@popperjs/core": "^2.11.6",
     "autoprefixer": "^10.4.13",
-    "bootstrap": "^5.2.3",
-    "bootstrap-select": "^1.13.18",
-    "slick-carousel": "^1.8.1",
     "bourbon": "^7.2.0",
-    "material-icons": "^1.10.11",
     "node-sass": "^8.0.0",
     "scss": "^0.2.4",
     "uglify-js": "^3.17.3"
