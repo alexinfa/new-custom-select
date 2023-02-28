@@ -19,7 +19,23 @@ esempio: @include focusCta;
 .custom-select-group .custom-select-button {
   border: 1px solid;
   width: 100%;
-  padding: 10px; }
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 48px; }
 
-.custom-select-group .custom-select-list-options {
-  padding-left: 0; }
+.custom-select-group .custom-select-options-list {
+  display: none;
+  list-style: none;
+  padding-left: 0;
+  margin-bottom: 0;
+  border: 1px solid; }
+  .custom-select-group .custom-select-options-list--item {
+    display: block;
+    padding: 10px; }
+    .custom-select-group .custom-select-options-list--item:hover, .custom-select-group .custom-select-options-list--item:focus, .custom-select-group .custom-select-options-list--item.active {
+      background-color: #0059b3;
+      color: #fff; }
+
+.custom-select-group.open .custom-select-options-list {
+  display: block; }

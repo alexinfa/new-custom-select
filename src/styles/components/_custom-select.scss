@@ -6,10 +6,34 @@
     .custom-select-button{
         border: 1px solid;
         width: 100%;
-        padding: 10px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 48px;
     }
 
-    .custom-select-list-options{
+    .custom-select-options-list{
+        display: none;
+        list-style: none;
         padding-left: 0;
+        margin-bottom: 0;
+        border: 1px solid;
+
+        &--item{
+            display: block;
+            padding: 10px;
+
+            &:hover, &:focus, &.active{
+                background-color: $background-color;
+                color: $white;
+            }
+        }
     }
+
+    &.open{
+        .custom-select-options-list{
+            display: block;
+        }
+    }
+
 }
