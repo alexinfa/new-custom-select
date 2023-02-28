@@ -28,11 +28,6 @@ document.addEventListener("DOMContentLoaded", function () {
     showHideListButton.forEach(element => {
         element.addEventListener("click", () => {
             element.parentElement.classList.toggle("open");
-
-            if (element.parentElement.classList.contains("open")) {
-                //console.log('aperto');
-            }
-
         });
     });
 
@@ -59,7 +54,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-     // chiusura dropdown cliccando fuori dall'elemento (close dropdown when click outside div)
+    // chiusura dropdown cliccando fuori dall'elemento (close dropdown when click outside div)
     document.addEventListener('click', function handleClickOutsideBox(event) {
         var box = document.querySelectorAll('.custom-select-group');
         box.forEach(element => {
