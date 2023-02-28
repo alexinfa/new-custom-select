@@ -32,6 +32,7 @@ document.addEventListener("DOMContentLoaded", function () {
             if (element.parentElement.classList.contains("open")) {
                 //console.log('aperto');
             }
+
         });
     });
 
@@ -58,6 +59,16 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
+     // chiusura dropdown cliccando fuori dall'elemento (close dropdown when click outside div)
+    document.addEventListener('click', function handleClickOutsideBox(event) {
+        var box = document.querySelectorAll('.custom-select-group');
+        box.forEach(element => {
+            if (!element.contains(event.target)) {
+                element.classList.remove('open');
+            }
+        });
+    });
+
     // chiusura dropdown con il tasto esci (close dropdown with escape button)
     var listCustomSelectWrapper = document.querySelectorAll('.custom-select-wrapper');
     listCustomSelectWrapper.forEach(element => {
@@ -66,8 +77,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 if (element.parentElement.classList.contains("open")) {
                     element.parentElement.classList.remove("open");
                 }
-            } 
+            }
         });
     });
-    
+
 });
