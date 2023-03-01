@@ -56,14 +56,14 @@ document.addEventListener("DOMContentLoaded", function () {
         } else {
             // impostazioni per multiselect
             for (var i = 0; i < linkList.length; i++) {
-                //let myvar = linkList[i].innerHTML;
+                //let multiLabel = linkList[i].innerHTML;
                 linkList[i].addEventListener("click", function () {
                     this.classList.toggle('active');
                     if (element.querySelector('.active') == null) {
                         customButton.textContent = thisLabelSelect;
 
                     } else {
-                        //customButton.textContent = myvar;
+                        //customButton.textContent = multiLabel;
                     }
                 });
             }
