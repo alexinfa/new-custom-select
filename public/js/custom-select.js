@@ -44,14 +44,31 @@ document.addEventListener("DOMContentLoaded", function () {
             customButton.textContent = thisLabelSelect;
         }
 
-        for (var i = 0; i < linkList.length; i++) {
-            linkList[i].addEventListener("click", function () {
-                (element.querySelector('.active')) ? element.querySelector('.active').classList.remove('active') : '';
-                this.classList.add('active');
-                this.parentElement.parentElement.parentElement.classList.remove('open');
-                customButton.textContent = element.querySelector('.active').innerText;
-            });
+        if (!element.classList.contains('custom-multiselect')) {
+            for (var i = 0; i < linkList.length; i++) {
+                linkList[i].addEventListener("click", function () {
+                    (element.querySelector('.active')) ? element.querySelector('.active').classList.remove('active') : '';
+                    this.classList.add('active');
+                    customButton.textContent = element.querySelector('.active').innerText;
+                    this.parentElement.parentElement.parentElement.classList.remove('open');
+                });
+            }
+        } else {
+            // impostazioni per multiselect
+            for (var i = 0; i < linkList.length; i++) {
+                //let myvar = linkList[i].innerHTML;
+                linkList[i].addEventListener("click", function () {
+                    this.classList.toggle('active');
+                    if (element.querySelector('.active') == null) {
+                        customButton.textContent = thisLabelSelect;
+
+                    } else {
+                        //customButton.textContent = myvar;
+                    }
+                });
+            }
         }
+
     });
 
     // chiusura dropdown cliccando fuori dall'elemento (close dropdown when click outside div)
