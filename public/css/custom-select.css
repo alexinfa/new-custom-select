@@ -58,6 +58,21 @@ esempio: @include focusCta;
   -webkit-transform: rotate(180deg);
   -moz-transform: rotate(180deg); }
 
+.custom-select-group.custom-multiselect .custom-select-options-list--item {
+  position: relative; }
+  .custom-select-group.custom-multiselect .custom-select-options-list--item.active::after {
+    content: "";
+    display: block;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    background-image: url(../assets/images/check.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    width: 16px;
+    height: 16px; }
+
 .custom-select-group ::-webkit-scrollbar {
   width: 10px; }
 
