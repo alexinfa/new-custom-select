@@ -63,7 +63,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         customButton.textContent = thisLabelSelect;
 
                     } else {
-                        //customButton.textContent = multiLabel;
+                        customButton.textContent = "Uno o più elementi inseriti";
                     }
                 });
             }
