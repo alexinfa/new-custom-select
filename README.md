@@ -5,7 +5,7 @@ Aggiungere al proprio progetto il file css custom-select.css e il file js custom
 La struttura è quella della classica select HTML alla quale è possibile assegnare o meno le classi di bootstrap "form group" e "form-control" o eventuali classi al button (come scritto nel file javascript).
 L'accessibilità è garantita dalla struttura iniziale pulita presente nel file html.
 
-Per la custom select bisogna includere select e label all'interno di due div contenitori "custom-select-wrapper" e "custom-select-group". Al custom-select-group eventualmente è possibile assegnare il "form-control" di bootstrap.
+Per la custom select bisogna includere select e label all'interno di due div contenitori "custom-select-wrapper" e "custom-select-group". Al custom-select-group eventualmente è possibile assegnare il "form-group" di bootstrap.
 Alla Label bisogna dare la classe "custom-select-label" mentre alla select (alla quale eventualmente è possibile assegnare la classe "form-control") bisogna aggiungere "js-custom-select" come nell'esempio sottostante:
 
     <div class="custom-select-group">
