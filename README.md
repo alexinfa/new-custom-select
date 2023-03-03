@@ -1,4 +1,4 @@
-## Custom Select
+## Custom Select in Javascript puro
 Select custom personalizzabile.
 Aggiungere al proprio progetto il file css custom-select.css e il file js custom-select.js.
 
