@@ -93,7 +93,6 @@ document.addEventListener("DOMContentLoaded", function () {
                         //customButton.textContent += element.querySelector('.active').innerText;
                         customButton.textContent = "";
                         //console.log(linkListActive.length)
-                        //customButton.append(wrapCounter);
                         customButton.innerText = (linkListActive.length) + (" ") + ("elementi selezionati");
                         if (linkListActive.length == "0") {
                             customButton.textContent = thisLabelSelect;
