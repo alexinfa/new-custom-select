@@ -1,4 +1,5 @@
 .custom-select-group {
+    position: relative;
     .custom-select-wrapper {
         display: none;
     }
@@ -13,6 +14,7 @@
         padding: 0 10px;
         height: 48px;
         background-color: $white;
+        cursor: pointer;
 
         &::after {
             content: "";
@@ -25,30 +27,61 @@
         }
     }
 
-    .custom-select-options-list {
+    .custom-select-list-container {
         display: none;
-        list-style: none;
-        padding-left: 0;
-        margin: 0;
+        position: absolute;
+        width: 100%;
         border: 1px solid $border-color;
-        max-height: 225px;
-        overflow-y: auto;
+        background-color: $white;
+        z-index: 1;
 
-        &--item {
-            display: block;
-            padding: 10px;
+        .custom-select-options-list {
+            list-style: none;
+            padding-left: 0;
+            margin: 0;
+            max-height: 225px;
+            overflow-y: auto;
 
-            &:hover,
-            &:focus,
-            &.active {
-                background-color: $background-color;
-                color: $white;
+            &--item {
+                display: block;
+                padding: 10px;
+
+                &:hover,
+                &:focus,
+                &.active {
+                    background-color: $background-color;
+                    color: $white;
+                }
+            }
+        }
+
+        .livesearch-container {
+            display: flex;
+
+            .livesearch-label {
+                position: absolute;
+                width: 1px;
+                height: 1px;
+                padding: 0;
+                margin: -1px;
+                overflow: hidden;
+                clip: rect(0, 0, 0, 0);
+                white-space: nowrap;
+                border: 0;
+            }
+
+            .livesearch-input {
+                width: 100%;
+                padding: 0 10px;
+                height: 48px;
+                margin: 8px;
+                border: 1px solid $border-color;
             }
         }
     }
 
     &.open {
-        .custom-select-options-list {
+        .custom-select-list-container {
             display: block;
         }
 

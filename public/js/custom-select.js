@@ -4,23 +4,48 @@ document.addEventListener("DOMContentLoaded", function () {
     var customSelect = document.querySelectorAll('.js-custom-select');
     customSelect.forEach((element) => {
         let buttonCustomSelect = document.createElement("button");
+        let containerOptionList = document.createElement("div");
         let listCustomSelect = document.createElement("ul");
         let customOptions = "";
         // parametri
+        containerOptionList.className = "custom-select-list-container"
         listCustomSelect.className = "custom-select-options-list";
         listCustomSelect.role = "listbox";
         buttonCustomSelect.className = "custom-select-button"; // aggiungere alla classe "custom-select-button" eventuali classi di bootstrap nel caso fosse necessario. (add bootstrap  classes to "custom-select-button" if necessary)
         //buttonCustomSelect.ariaLabel = "seleziona un'opzione";
 
         for (listOptions = 0; listOptions < element.length; listOptions++) {
-            customOptions = customOptions + "<li>" + "<a href='#' class='custom-select-options-list--item' role='option'>" + element.options[listOptions].text + "</a>" + "</li>";
+            customOptions = customOptions + "<li class='custom-select-options-list-items'>" + "<a href='#' class='custom-select-options-list--item' role='option'>" + element.options[listOptions].text + "</a>" + "</li>";
         }
 
         element.parentElement.parentElement.append(buttonCustomSelect);
+        element.parentElement.parentElement.append(containerOptionList);
         element.parentElement.parentElement.append(listCustomSelect);
+        containerOptionList.append(listCustomSelect);
 
         listCustomSelect.innerHTML = customOptions;
         //console.log(customOptions)
+
+
+        if (element.parentElement.parentElement.classList.contains('livesearch')) {
+            let inputWrapper = document.createElement("div");
+            let inputLiveSearch = document.createElement("input");
+            let labelInput = document.createElement("label");
+
+            inputWrapper.className = "livesearch-container";
+            inputLiveSearch.type = "text";
+            inputLiveSearch.id = element.id + "-" + "livesearch-input";
+            inputLiveSearch.className = "livesearch-input";
+            inputLiveSearch.placeholder = "Filtra tra le opzioni";
+            labelInput.innerHTML = "Filtra tra le opzioni";
+            labelInput.htmlFor = element.id + "-" + "livesearch-input";
+            labelInput.className = "livesearch-label";
+
+            listCustomSelect.parentElement.prepend(inputWrapper);
+            inputWrapper.append(labelInput);
+            inputWrapper.append(inputLiveSearch);
+        }
+
     });
 
     // mostra e nascondi dropdown (hide and show dropdown)
@@ -50,26 +75,40 @@ document.addEventListener("DOMContentLoaded", function () {
                     (element.querySelector('.active')) ? element.querySelector('.active').classList.remove('active') : '';
                     this.classList.add('active');
                     customButton.textContent = element.querySelector('.active').innerText;
-                    this.parentElement.parentElement.parentElement.classList.remove('open');
+                    this.parentElement.parentElement.parentElement.parentElement.classList.remove('open');
                 });
             }
         } else {
             // impostazioni per multiselect
             for (var i = 0; i < linkList.length; i++) {
+                let linkListActive = element.getElementsByClassName("active");
+
                 //let multiLabel = linkList[i].innerHTML;
-                linkList[i].addEventListener("click", function () {
+                linkList[i].addEventListener("click", function (e) {
                     this.classList.toggle('active');
-                    if (element.querySelector('.active') == null) {
+                    if (element.querySelectorAll('.active') == null) {
                         customButton.textContent = thisLabelSelect;
 
                     } else {
-                        customButton.textContent = "Uno o più elementi inseriti";
+                        //customButton.textContent += element.querySelector('.active').innerText;
+                        customButton.textContent = "";
+                        //console.log(linkListActive.length)
+                        //customButton.append(wrapCounter);
+                        customButton.innerText = (linkListActive.length) + (" ") + ("elementi selezionati");
+                        if (linkListActive.length == "0") {
+                            customButton.textContent = thisLabelSelect;
+                        }
+                        if (linkListActive.length == "1") {
+                            customButton.textContent = (linkListActive.length) + (" ") + ("elemento selezionato");
+                        }
                     }
                 });
             }
         }
-
     });
+
+    // funzione per il livesearch (livesearch function)
+
 
     // chiusura dropdown cliccando fuori dall'elemento (close dropdown when click outside div)
     document.addEventListener('click', function handleClickOutsideBox(event) {
@@ -93,4 +132,9 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 
+
 });
+
+
+
+
