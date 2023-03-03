@@ -60,6 +60,8 @@ document.addEventListener("DOMContentLoaded", function () {
     var customSelectGroup = document.querySelectorAll('.custom-select-group');
     customSelectGroup.forEach(element => {
         let labelSelect = element.querySelectorAll(".custom-select-label");
+        let listOptionContainer = element.querySelectorAll(".custom-select-list-container");
+        let listOptionContainerUl = element.querySelector(".custom-select-options-list");
         let customButton = element.querySelector(".custom-select-button");
         let linkList = element.querySelectorAll(".custom-select-options-list--item");
 
@@ -107,7 +109,31 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     // funzione per il livesearch (livesearch function)
+    var inputLiveSearch = document.querySelectorAll(".livesearch-input");
+    inputLiveSearch.forEach(element => {
+        // console.log(li.length)
 
+        element.addEventListener('keydown', evt => {
+            let input, filter, ul, li, a, i, txtValue;
+            input = element;
+            filter = input.value.toUpperCase();
+            ul = element.parentElement.nextElementSibling;
+            li = element.parentElement.nextElementSibling.getElementsByTagName("li");
+
+            let spanNoresult = this.createElement("span");
+
+            for (i = 0; i < li.length; i++) {
+                a = li[i].getElementsByTagName("a")[0];
+                txtValue = a.textContent || a.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    li[i].style.display = "";
+                } else {
+                    li[i].style.display = "none";
+                }
+            }
+        });
+
+    });
 
     // chiusura dropdown cliccando fuori dall'elemento (close dropdown when click outside div)
     document.addEventListener('click', function handleClickOutsideBox(event) {
