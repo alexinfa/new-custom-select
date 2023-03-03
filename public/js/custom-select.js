@@ -4,23 +4,48 @@ document.addEventListener("DOMContentLoaded", function () {
     var customSelect = document.querySelectorAll('.js-custom-select');
     customSelect.forEach((element) => {
         let buttonCustomSelect = document.createElement("button");
+        let containerOptionList = document.createElement("div");
         let listCustomSelect = document.createElement("ul");
         let customOptions = "";
         // parametri
+        containerOptionList.className = "custom-select-list-container"
         listCustomSelect.className = "custom-select-options-list";
         listCustomSelect.role = "listbox";
         buttonCustomSelect.className = "custom-select-button"; // aggiungere alla classe "custom-select-button" eventuali classi di bootstrap nel caso fosse necessario. (add bootstrap  classes to "custom-select-button" if necessary)
         //buttonCustomSelect.ariaLabel = "seleziona un'opzione";
 
         for (listOptions = 0; listOptions < element.length; listOptions++) {
-            customOptions = customOptions + "<li>" + "<a href='#' class='custom-select-options-list--item' role='option'>" + element.options[listOptions].text + "</a>" + "</li>";
+            customOptions = customOptions + "<li class='custom-select-options-list-items'>" + "<a href='#' class='custom-select-options-list--item' role='option'>" + element.options[listOptions].text + "</a>" + "</li>";
         }
 
         element.parentElement.parentElement.append(buttonCustomSelect);
+        element.parentElement.parentElement.append(containerOptionList);
         element.parentElement.parentElement.append(listCustomSelect);
+        containerOptionList.append(listCustomSelect);
 
         listCustomSelect.innerHTML = customOptions;
         //console.log(customOptions)
+
+
+        if (element.parentElement.parentElement.classList.contains('livesearch')) {
+            let inputWrapper = document.createElement("div");
+            let inputLiveSearch = document.createElement("input");
+            let labelInput = document.createElement("label");
+
+            inputWrapper.className = "livesearch-container";
+            inputLiveSearch.type = "text";
+            inputLiveSearch.id = element.id + "-" + "livesearch-input";
+            inputLiveSearch.className = "livesearch-input";
+            inputLiveSearch.placeholder = "Filtra tra le opzioni";
+            labelInput.innerHTML = "Filtra tra le opzioni";
+            labelInput.htmlFor = element.id + "-" + "livesearch-input";
+            labelInput.className = "livesearch-label";
+
+            listCustomSelect.parentElement.prepend(inputWrapper);
+            inputWrapper.append(labelInput);
+            inputWrapper.append(inputLiveSearch);
+        }
+
     });
 
     // mostra e nascondi dropdown (hide and show dropdown)
@@ -35,6 +60,8 @@ document.addEventListener("DOMContentLoaded", function () {
     var customSelectGroup = document.querySelectorAll('.custom-select-group');
     customSelectGroup.forEach(element => {
         let labelSelect = element.querySelectorAll(".custom-select-label");
+        let listOptionContainer = element.querySelectorAll(".custom-select-list-container");
+        let listOptionContainerUl = element.querySelector(".custom-select-options-list");
         let customButton = element.querySelector(".custom-select-button");
         let linkList = element.querySelectorAll(".custom-select-options-list--item");
 
@@ -50,24 +77,61 @@ document.addEventListener("DOMContentLoaded", function () {
                     (element.querySelector('.active')) ? element.querySelector('.active').classList.remove('active') : '';
                     this.classList.add('active');
                     customButton.textContent = element.querySelector('.active').innerText;
-                    this.parentElement.parentElement.parentElement.classList.remove('open');
+                    this.parentElement.parentElement.parentElement.parentElement.classList.remove('open');
                 });
             }
         } else {
             // impostazioni per multiselect
             for (var i = 0; i < linkList.length; i++) {
+                let linkListActive = element.getElementsByClassName("active");
+
                 //let multiLabel = linkList[i].innerHTML;
-                linkList[i].addEventListener("click", function () {
+                linkList[i].addEventListener("click", function (e) {
                     this.classList.toggle('active');
-                    if (element.querySelector('.active') == null) {
+                    if (element.querySelectorAll('.active') == null) {
                         customButton.textContent = thisLabelSelect;
 
                     } else {
-                        customButton.textContent = "Uno o più elementi inseriti";
+                        //customButton.textContent += element.querySelector('.active').innerText;
+                        customButton.textContent = "";
+                        //console.log(linkListActive.length)
+                        customButton.innerText = (linkListActive.length) + (" ") + ("elementi selezionati");
+                        if (linkListActive.length == "0") {
+                            customButton.textContent = thisLabelSelect;
+                        }
+                        if (linkListActive.length == "1") {
+                            customButton.textContent = (linkListActive.length) + (" ") + ("elemento selezionato");
+                        }
                     }
                 });
             }
         }
+    });
+
+    // funzione per il livesearch (livesearch function)
+    var inputLiveSearch = document.querySelectorAll(".livesearch-input");
+    inputLiveSearch.forEach(element => {
+        // console.log(li.length)
+
+        element.addEventListener('keydown', evt => {
+            let input, filter, ul, li, a, i, txtValue;
+            input = element;
+            filter = input.value.toUpperCase();
+            ul = element.parentElement.nextElementSibling;
+            li = element.parentElement.nextElementSibling.getElementsByTagName("li");
+
+            let spanNoresult = this.createElement("span");
+
+            for (i = 0; i < li.length; i++) {
+                a = li[i].getElementsByTagName("a")[0];
+                txtValue = a.textContent || a.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    li[i].style.display = "";
+                } else {
+                    li[i].style.display = "none";
+                }
+            }
+        });
 
     });
 
@@ -93,4 +157,9 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 
+
 });
+
+
+
+
