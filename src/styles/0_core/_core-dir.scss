@@ -1,3 +1,3 @@
-@import 'variables';
-@import 'mixin';
-@import 'core';
+@use 'variables' as *;
+@use 'mixin' as *;
+@use 'core' as *;

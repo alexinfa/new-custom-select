@@ -4,9 +4,9 @@
   "description": "Custom select in pure javascript compatible with bootstrap (all version) and custom framework",
   "main": "index.js",
   "scripts": {
-    "scss": "node-sass --watch src/styles/main.scss public/css/custom-select.css",
-    "scss-cpr": "node-sass --output-style compressed --source-map public/css/custom-select.min.css.map src/styles/main.scss public/css/custom-select.min.css",
-	"scripts-cpr": "uglifyjs public/js/*.js --output public/js/script.min.js --source-map url=project-script.min.js.map",
+    "start": "sass --watch src/styles/main.scss public/css/custom-select.css",
+    "cpr": "node-sass --output-style compressed --source-map public/css/custom-select.min.css.map src/styles/main.scss public/css/custom-select.min.css",
+    "scripts-cpr": "uglifyjs public/js/*.js --output public/js/script.min.js --source-map url=project-script.min.js.map",
     "stylelint": "stylelint src/styles/**/*.scss || echo \"lint faild for some file(s).\""
   },
   "repository": {
@@ -22,7 +22,7 @@
     "@popperjs/core": "^2.11.6",
     "autoprefixer": "^10.4.13",
     "bourbon": "^7.2.0",
-    "node-sass": "^8.0.0",
+    "sass": "^1.97.3",
     "scss": "^0.2.4",
     "uglify-js": "^3.17.3"
   },
